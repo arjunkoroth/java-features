@@ -47,15 +47,22 @@ public class Java8features {
         });
         // Filter data
         Stream<Product> filtered = productList.stream()
-                .filter(p->p.price > 200000);
-        filtered.forEach(product->{
+                .filter(p -> p.price > 200000);
+        filtered.forEach(product -> {
             System.out.println(product.toString());
         });
     }
-    
-    public static void methodReference(){
-        ReadableInterface rd = MethodReference::sayHello;
-        rd.read("hello");
+
+    public static void methodReference() {
+        // Method reference to a static method
+        ReadableInterface rdStatic = MethodReference::sayHello;
+        rdStatic.read("arjun");
+        // Method reference to an instance method
+        ReadableInterface rdInstance = new MethodReference()::sayHelloInstance;
+        rdInstance.read("arjun");
+        // Method reference to a constructor.
+        ReadableInterface rdConstructor = MethodReference::new;
+        rdConstructor.read("Arjun");
     }
 
     public static void main(String[] args) {
