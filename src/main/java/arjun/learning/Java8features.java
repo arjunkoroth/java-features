@@ -5,6 +5,7 @@ import arjun.learning.beans.Product;
 import arjun.learning.interfaces.ReadableInterface;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -163,6 +164,22 @@ public class Java8features {
             System.out.println(entry.getKey() + " " + entry.getValue());
         });
         
+        prodMap.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .forEach(System.out::println);
+        
+        List<String> list = new ArrayList<String>() {
+            {
+                add("A");
+                add("C");
+                add("B");
+                add("D");
+            }
+        };
+        list.stream()
+                .sorted(Comparator.reverseOrder())
+                .forEach(System.out::println);
     }
 
     public static void main(String[] args) {
